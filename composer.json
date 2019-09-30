@@ -1,0 +1,23 @@
+{
+	"name": "accgit/single-web",
+	"type": "library",
+	"description": "Creating one-page sites.",
+	"license": ["MIT"],
+	"authors": [
+		{
+			"name": "Zdeněk Papučík",
+			"homepage": "https://github.com/accgit"
+		}
+	],
+	"require": {
+		"php": ">=7.1",
+		"tracy/tracy": "^2.6",
+		"latte/latte": "^2.5",
+		"nette/forms": "^3.0",
+		"nette/robot-loader": "^3.0",
+		"dg/composer-cleaner": "^2.0"
+	},
+	"autoload": {
+		"classmap": ["src/"]
+	}
+}
