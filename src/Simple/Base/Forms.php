@@ -15,7 +15,7 @@ use Nette\Forms\Form;
  * Creates, validates and renders HTML forms.
  * @package Drago\Simple
  */
-trait forms
+trait Forms
 {
 	public function forms()
 	{
