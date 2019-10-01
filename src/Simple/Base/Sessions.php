@@ -3,35 +3,25 @@
 declare(strict_types = 1);
 
 /**
- * Drago Single
+ * Drago Extension
  * Package built on Nette Framework
  */
-namespace Single;
+namespace Drago\Simple\Base;
 
 use Nette\Http\RequestFactory;
 use Nette\Http\Response;
 use Nette\Http\Session;
-use Nette\Http\SessionSection;
-use Nette\SmartObject;
 
 
 /**
- * Single web pages.
- * @package Drago\Single
+ * Provides access to session sections as well as session settings and management methods.
+ * @package Drago\SimplePage
  */
-class Sessions
+trait Sessions
 {
-	use SmartObject;
-
 	public function session(): Session
 	{
 		$request = (new RequestFactory)->createHttpRequest();
 		return new Session($request, new Response);
-	}
-
-
-	public function getSessionSection(string $section): SessionSection
-	{
-		return $this->session()->getSection($section);
 	}
 }
