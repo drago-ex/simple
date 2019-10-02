@@ -6,6 +6,7 @@ declare(strict_types = 1);
  * Dago Extension
  * Package built on Nette Framework
  */
+
 namespace Drago\Simple;
 
 use Latte\Engine;
