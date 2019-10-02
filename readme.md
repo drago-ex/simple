@@ -7,6 +7,7 @@
 
 ## Info
 Creating one-page sites.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://raw.githubusercontent.com/drago-ex/simple/master/license.md)
 [![PHP version](https://badge.fury.io/ph/drago-ex%2Fsimple.svg)](https://badge.fury.io/ph/drago-ex%2Fsimple)
 [![Build Status](https://travis-ci.org/drago-ex/simple.svg?branch=master)](https://travis-ci.org/drago-ex/simple)
