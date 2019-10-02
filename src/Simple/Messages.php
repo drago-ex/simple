@@ -35,17 +35,17 @@ class Messages
 	 */
 	public function flashMessage(string $message): SessionSection
 	{
-		$message = $this->fmId();
-		$message->message = $message;
-		$message->setExpiration('5 second');
-		return $message;
+		$sessions = $this->fmId();
+		$sessions->message = $message;
+		$sessions->setExpiration('5 second');
+		return $sessions;
 	}
 
 
 	/**
 	 * Send message to template.
 	 */
-	public function getFlashMessage(): string
+	public function getFlashMessage(): ?string
 	{
 		return $this->fmId()
 			->message;
