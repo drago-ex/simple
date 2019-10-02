@@ -6,18 +6,16 @@
 <p align="center">Simple packages built on Nette Framework</p>
 
 ## Info
-
 Creating one-page sites.
 
 ## Requirements
-
 - PHP 7.1 or higher
 - composer
 
 ## Installation
-
 ```
 composer require drago/simple
 ```
 
 ## Documentation
+https://github.com/drago-ex/simple/wiki/Documentation
