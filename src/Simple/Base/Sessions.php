@@ -16,7 +16,6 @@ use Nette\Http\Session;
 
 /**
  * Provides access to session sections as well as session settings and management methods.
- * @package Drago\SimplePage
  */
 trait Sessions
 {

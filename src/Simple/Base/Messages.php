@@ -7,9 +7,8 @@ declare(strict_types = 1);
  * Package built on Nette Framework
  */
 
-namespace Drago\Simple\Component;
+namespace Drago\Simple\Base;
 
-use Drago\Simple\Base\Sessions;
 use Nette\Http\SessionSection;
 
 

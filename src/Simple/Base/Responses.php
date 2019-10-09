@@ -13,13 +13,16 @@ use Nette\Http\Response;
 
 
 /**
- * HttpResponse class.
- * @package Drago\Simple
+ * Http response.
  */
 trait Responses
 {
-	public function response()
+	/**
+	 * Redirects to a new URL.
+	 */
+	public function redirect(string $url): void
 	{
-		return new Response;
+		$response = new Response;
+		$response->redirect($url);
 	}
 }
