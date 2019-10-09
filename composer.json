@@ -11,9 +11,10 @@
 	],
 	"require": {
 		"php": ">=7.1",
-		"tracy/tracy": "^2.7",
+		"tracy/tracy": "^2.6",
 		"latte/latte": "^2.5",
-		"nette/robot-loader": "^3.2"
+		"nette/robot-loader": "^3.0",
+		"nette/http": "^3.0"
 	},
 	"autoload": {
 		"classmap": ["src/"]
