@@ -21,7 +21,7 @@ trait Sessions
 {
 	public function session(): Session
 	{
-		$request = (new RequestFactory)->createHttpRequest();
+		$request = (new RequestFactory)->fromGlobals();
 		return new Session($request, new Response);
 	}
 }

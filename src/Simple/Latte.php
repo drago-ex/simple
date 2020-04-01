@@ -25,7 +25,7 @@ class Latte extends Engine
 	private function basePath(): string
 	{
 		return rtrim(
-			(new RequestFactory)->createHttpRequest()
+			(new RequestFactory)->fromGlobals()
 				->url->basePath, '/'
 		);
 	}
