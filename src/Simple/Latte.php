@@ -34,7 +34,6 @@ class Latte extends Engine
 	 */
 	public function createTemplates(string $name, array $params = []): Runtime\Template
 	{
-		$parameters = $params + ['basePath' => $this->basePath()];
-		return parent::createTemplate($name, $parameters);
+		return parent::createTemplate($name, $params + ['basePath' => $this->basePath()]);
 	}
 }
