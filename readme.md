@@ -15,7 +15,7 @@ Creating one-page sites.
 [![Coverage Status](https://coveralls.io/repos/github/drago-ex/simple/badge.svg?branch=master)](https://coveralls.io/github/drago-ex/simple?branch=master)
 
 ## Requirements
-- PHP 7.2 or higher
+- PHP 7.1 or higher
 - composer
 
 ## Installation
