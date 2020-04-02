@@ -24,20 +24,17 @@ class Latte extends Engine
 	 */
 	private function basePath(): string
 	{
-		return rtrim(
-			(new RequestFactory)->fromGlobals()
-				->url->basePath, '/'
-		);
+		return rtrim((new RequestFactory)->fromGlobals()
+			->url->basePath, '/');
 	}
 
 
 	/**
 	 * Creates template object.
 	 */
-	public function createTemplate(string $name, array $params = []): Runtime\Template
+	public function createTemplates(string $name, array $params = []): Runtime\Template
 	{
-		return parent::createTemplate($name,
-			$params + ['basePath' => $this->basePath()]
-		);
+		$parameters = $params + ['basePath' => $this->basePath()];
+		return parent::createTemplate($name, $parameters);
 	}
 }

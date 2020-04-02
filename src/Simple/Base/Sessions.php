@@ -9,9 +9,7 @@ declare(strict_types = 1);
 
 namespace Drago\Simple\Base;
 
-use Nette\Http\RequestFactory;
-use Nette\Http\Response;
-use Nette\Http\Session;
+use Nette\Http;
 
 
 /**
@@ -19,9 +17,9 @@ use Nette\Http\Session;
  */
 trait Sessions
 {
-	public function session(): Session
+	public function session(): Http\Session
 	{
-		$request = (new RequestFactory)->fromGlobals();
-		return new Session($request, new Response);
+		$request = (new Http\RequestFactory())->fromGlobals();
+		return new Http\Session($request, new Http\Response());
 	}
 }
