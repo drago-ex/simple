@@ -19,7 +19,7 @@ trait Sessions
 {
 	public function session(): Http\Session
 	{
-		$request = (new Http\RequestFactory())->fromGlobals();
-		return new Http\Session($request, new Http\Response());
+		$request = (new Http\RequestFactory)->fromGlobals();
+		return new Http\Session($request, new Http\Response);
 	}
 }

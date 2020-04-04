@@ -11,7 +11,7 @@ namespace Drago\Simple;
 
 use Latte\Engine;
 use Latte\Runtime;
-use Nette\Http\RequestFactory;
+use Nette;
 
 
 /**
@@ -24,7 +24,7 @@ class Latte extends Engine
 	 */
 	private function basePath(): string
 	{
-		return rtrim((new RequestFactory)
+		return rtrim((new Nette\Http\RequestFactory)
 			->fromGlobals()->url->basePath, '/');
 	}
 

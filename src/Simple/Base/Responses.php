@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Drago\Simple\Base;
 
-use Nette\Http\Response;
+use Nette;
 
 
 /**
@@ -22,7 +22,7 @@ trait Responses
 	 */
 	public function redirect(string $url): void
 	{
-		$response = new Response;
+		$response = new Nette\Http\Response;
 		$response->redirect($url);
 	}
 }
