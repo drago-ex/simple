@@ -47,7 +47,6 @@ trait Message
 	 */
 	public function getFlashMessage(): ?string
 	{
-		return $this->fmId()
-			->message;
+		return $this->fmId()->message;
 	}
 }
