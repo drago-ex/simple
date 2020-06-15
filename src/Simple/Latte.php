@@ -10,8 +10,8 @@ declare(strict_types = 1);
 namespace Drago\Simple;
 
 use Latte\Engine;
-use Latte\Runtime;
-use Nette;
+use Latte\Runtime\Template;
+use Nette\Http\RequestFactory;
 
 
 /**
@@ -24,7 +24,7 @@ class Latte extends Engine
 	 */
 	private function basePath(): string
 	{
-		return rtrim((new Nette\Http\RequestFactory)
+		return rtrim((new RequestFactory)
 			->fromGlobals()->url->basePath, '/');
 	}
 
@@ -32,7 +32,7 @@ class Latte extends Engine
 	/**
 	 * Creates template object.
 	 */
-	public function createTemplate(string $name, array $params = []): Runtime\Template
+	public function createTemplate(string $name, array $params = []): Template
 	{
 		$parameters = $params + ['basePath' => $this->basePath()];
 		return parent::createTemplate($name, $parameters);

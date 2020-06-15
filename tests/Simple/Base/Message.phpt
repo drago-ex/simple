@@ -2,17 +2,17 @@
 
 declare(strict_types = 1);
 
+use Nette\Http\SessionSection;
 use Tester\Assert;
 
 require __DIR__ . '/../../bootstrap.php';
 
-
-class Messages
+class TestMessage
 {
-	use Drago\Simple\Base\Messages;
+	use Drago\Simple\Base\Message;
 }
 
-$class = new Messages;
-Assert::type(Nette\Http\SessionSection::class, $class->flashMessage('Message...'));
+$class = new TestMessage;
+Assert::type(SessionSection::class, $class->flashMessage('Message...'));
 Assert::type('string', $class->getFlashMessage());
 Assert::same('Message...', $class->getFlashMessage());

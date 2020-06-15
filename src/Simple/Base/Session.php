@@ -15,7 +15,7 @@ use Nette\Http;
 /**
  * Provides access to session sections as well as session settings and management methods.
  */
-trait Sessions
+trait Session
 {
 	public function session(): Http\Session
 	{

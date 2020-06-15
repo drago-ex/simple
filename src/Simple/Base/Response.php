@@ -9,20 +9,20 @@ declare(strict_types = 1);
 
 namespace Drago\Simple\Base;
 
-use Nette;
+use Nette\Http;
 
 
 /**
  * Http response.
  */
-trait Responses
+trait Response
 {
 	/**
 	 * Redirects to a new URL.
 	 */
 	public function redirect(string $url): void
 	{
-		$response = new Nette\Http\Response;
+		$response = new Http\Response;
 		$response->redirect($url);
 	}
 }

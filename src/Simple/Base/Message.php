@@ -15,7 +15,7 @@ use Nette\Http\SessionSection;
 /**
  * Flash message.
  */
-trait Messages
+trait Message
 {
 	use Sessions;
 
