@@ -17,7 +17,7 @@ use Nette\Http\SessionSection;
  */
 trait Message
 {
-	use Sessions;
+	use Session;
 
 	/** @var string */
 	private $fm = 'fm';
@@ -35,10 +35,10 @@ trait Message
 	 */
 	public function flashMessage(string $message): SessionSection
 	{
-		$sessions = $this->fmId();
-		$sessions->message = $message;
-		$sessions->setExpiration('5 second');
-		return $sessions;
+		$session = $this->fmId();
+		$session->message = $message;
+		$session->setExpiration('5 second');
+		return $session;
 	}
 
 
