@@ -19,8 +19,7 @@ trait Message
 {
 	use Session;
 
-	/** @var string */
-	private $fm = 'fm';
+	private string $fm = 'fm';
 
 
 	private function fmId(): SessionSection

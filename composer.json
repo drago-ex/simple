@@ -10,7 +10,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.1",
+		"php": ">=7.4",
 		"latte/latte": "^2.7",
 		"nette/robot-loader": "^3.2",
 		"nette/http": "^3.0"
@@ -22,5 +22,8 @@
 	},
 	"autoload": {
 		"classmap": ["src/"]
+	},
+	"scripts": {
+		"phpstan": "phpstan analyse --configuration phpstan.neon src"
 	}
 }
