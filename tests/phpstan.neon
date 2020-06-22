@@ -1,5 +1,5 @@
 includes:
-	- vendor/phpstan/phpstan-nette/extension.neon
+	- ../vendor/phpstan/phpstan-nette/extension.neon
 
 parameters:
 	level: 5
