@@ -129,7 +129,7 @@ $translator = new Translator(__DIR__ . '/path/to/dir/' . $locale . '.ini');
 
 Add translate filter.
 ```php
-$this->latte->addFilter('translate', function ($message) use ($translator) {
+$latte->addFilter('translate', function ($message) use ($translator) {
 	return $translator->translate($message);
 });
 ```
