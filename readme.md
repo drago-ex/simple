@@ -82,6 +82,15 @@ public function render(): void
 }
 ```
 
+## View passing parameters
+```php
+public function render(): void
+{
+	$message['message'] = $this->getFlashMessage();
+	$this->latte->render(__DIR__ . '/path/to/dir/view.latte', $message);
+}
+```
+
 ## View parameter for include files
 ```latte
 {$basePath}
