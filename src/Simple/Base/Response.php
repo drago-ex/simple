@@ -20,9 +20,9 @@ trait Response
 	/**
 	 * Redirects to a new URL.
 	 */
-	public function redirect(string $url): void
+	public function redirect(string $url, int $code = Http\Response::S302_FOUND): void
 	{
 		$response = new Http\Response;
-		$response->redirect($url);
+		$response->redirect($url, $code);
 	}
 }
