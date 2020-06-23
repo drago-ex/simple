@@ -3,10 +3,10 @@
 </p>
 
 <h3 align="center">Drago Extension</h3>
-<p align="center">Simple packages built on Nette Framework</p>
+<p align="center">Extension for Nette Framework</p>
 
-## Info
-Creating one-page sites.
+## Drago Simple
+Easy configuration for single-page sites.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://raw.githubusercontent.com/drago-ex/simple/master/license.md)
 [![PHP version](https://badge.fury.io/ph/drago-ex%2Fsimple.svg)](https://badge.fury.io/ph/drago-ex%2Fsimple)
@@ -15,7 +15,7 @@ Creating one-page sites.
 [![Coverage Status](https://coveralls.io/repos/github/drago-ex/simple/badge.svg?branch=master)](https://coveralls.io/github/drago-ex/simple?branch=master)
 
 ## Requirements
-- PHP 7.1 or higher
+- PHP 7.4 or higher
 - composer
 
 ## Installation
@@ -23,5 +23,57 @@ Creating one-page sites.
 composer require drago/simple
 ```
 
-## Documentation
-https://github.com/drago-ex/simple/wiki/Documentation
+## Session
+```php
+use Drago\Simple\Base\Session
+
+// Get session.
+$this->session();
+```
+
+## Message
+```php
+use Drago\Simple\Base\Message;
+
+// Save message.
+$this->flashMessage('Message...');
+
+// Print message.
+$this->getFlashMessage();
+```
+
+## Create message
+```php
+public function render(): void
+{
+	$this->flashMessage('Message...');
+	$parameter['message'] = $this->getFlashMessage();
+	$this->latte->render(__DIR__ . '/templates/Home.latte', $parameters);
+}
+```
+
+## Print message in template
+```latte
+<p n:if="$message">{$message}</p>
+```
+
+## Response
+```php
+use Drago\Simple\Base\Response;
+
+$this->redirect('#');
+```
+
+## Controller
+```php
+final class HomeController
+{
+	private Latte\Engine $latte;
+
+
+	public function __construct(Latte\Engine $latte)
+	{
+		$this->latte = $latte;
+	}
+}
+```
