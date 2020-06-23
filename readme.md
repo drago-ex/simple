@@ -29,7 +29,7 @@ Easy configuration for single-page sites.
 composer require drago/simple
 ```
 
-## Session
+## Trait Session
 ```php
 use Drago\Simple\Base\Session
 
@@ -37,7 +37,7 @@ use Drago\Simple\Base\Session
 $this->session();
 ```
 
-## Message
+## Trait Message
 ```php
 use Drago\Simple\Base\Message;
 
@@ -48,12 +48,7 @@ $this->flashMessage('Message...');
 $this->getFlashMessage();
 ```
 
-## Print message in template
-```latte
-<p n:if="$message">{$message}</p>
-```
-
-## Response
+## Trait Response
 ```php
 use Drago\Simple\Base\Response;
 
@@ -62,7 +57,7 @@ $this->redirect('#');
 
 ## Controller
 ```php
-final class HomeController
+final class Home
 {
 	private Latte\Engine $latte;
 
@@ -74,24 +69,30 @@ final class HomeController
 }
 ```
 
-## View
+## Template
 ```php
 public function render(): void
 {
-	$this->latte->render(__DIR__ . '/path/to/dir/view.latte');
+	$this->latte->render(__DIR__ . '/path/to/dir/template.latte');
 }
 ```
 
-## View passing parameters
+## Template passing parameters
 ```php
 public function render(): void
 {
+	$this-flashMessage('message...');
 	$message['message'] = $this->getFlashMessage();
-	$this->latte->render(__DIR__ . '/path/to/dir/view.latte', $message);
+	$this->latte->render(__DIR__ . '/path/to/dir/template.latte', $message);
 }
 ```
 
-## View parameter for include files
+## Template print message
+```latte
+<p n:if="$message">{$message}</p>
+```
+
+## Template default parameter for include files
 ```latte
 {$basePath}
 ```
