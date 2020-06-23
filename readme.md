@@ -76,6 +76,11 @@ public function render(): void
 }
 ```
 
+## View parameter for include files
+```latte
+{$basePath}
+```
+
 ## Forms
 Install via composer.
 ```
