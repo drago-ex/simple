@@ -1,7 +1,7 @@
 {
 	"name": "drago-ex/simple",
 	"type": "library",
-	"description": "Creating one-page sites.",
+	"description": "Easy configuration for single-page sites.",
 	"license": ["MIT"],
 	"authors": [
 		{
