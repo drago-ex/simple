@@ -103,7 +103,7 @@ Install via composer.
 composer require nette/forms
 ```
 
-Add form macro.
+Forms latte macro.
 ```php
 $latte->onCompile[] = function () use ($latte) {
 	FormMacros::install($latte->getCompiler());
@@ -116,18 +116,20 @@ Install via composer.
 composer require drago-ex/translator
 ```
 
-Translate property.
+Translator property.
 ```php
 private array $lang = ['en', 'cs'];
 ```
 
-Translate detect.
+Translator language detect.
 ```php
-$locale = (new Request)->detectLanguage($this->lang);
-$translator = new Translator(__DIR__ . '/path/to/dir/' . $locale . '.ini');
+$translator = new Translator(__DIR__ . '/locale');
+$translator->setTranslate((new RequestFactory())->fromGlobals()
+	->detectLanguage($this->lang)
+);
 ```
 
-Add translate filter.
+Translator latte filter.
 ```php
 $latte->addFilter('translate', function ($message) use ($translator) {
 	return $translator->translate($message);
