@@ -69,7 +69,7 @@ final class Home
 }
 ```
 
-## Template
+## Template render
 ```php
 public function render(): void
 {
