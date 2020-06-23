@@ -42,16 +42,6 @@ $this->flashMessage('Message...');
 $this->getFlashMessage();
 ```
 
-## Create message
-```php
-public function render(): void
-{
-	$this->flashMessage('Message...');
-	$parameter['message'] = $this->getFlashMessage();
-	$this->latte->render(__DIR__ . '/templates/Home.latte', $parameters);
-}
-```
-
 ## Print message in template
 ```latte
 <p n:if="$message">{$message}</p>
@@ -75,5 +65,13 @@ final class HomeController
 	{
 		$this->latte = $latte;
 	}
+}
+```
+
+## View
+```php
+public function render(): void
+{
+	$this->latte->render(__DIR__ . '/path/to/view.latte');
 }
 ```
