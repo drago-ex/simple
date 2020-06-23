@@ -82,7 +82,7 @@ Install via composer.
 composer require nette/forms
 ```
 
-Add latte filter.
+Add form macro.
 ```php
 $latte->onCompile[] = function () use ($latte) {
 	FormMacros::install($latte->getCompiler());
@@ -112,9 +112,3 @@ $this->latte->addFilter('translate', function ($message) use ($translator) {
 	return $translator->translate($message);
 });
 ```
-
-Add latte filter.
-```php
-$latte->onCompile[] = function () use ($latte) {
-	FormMacros::install($latte->getCompiler());
-};
