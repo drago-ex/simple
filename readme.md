@@ -72,6 +72,49 @@ final class HomeController
 ```php
 public function render(): void
 {
-	$this->latte->render(__DIR__ . '/path/to/view.latte');
+	$this->latte->render(__DIR__ . '/path/to/dir/view.latte');
 }
 ```
+
+## Forms
+Install via composer.
+```
+composer require nette/forms
+```
+
+Add latte filter.
+```php
+$latte->onCompile[] = function () use ($latte) {
+	FormMacros::install($latte->getCompiler());
+};
+```
+
+## Translator
+Install via composer.
+```
+composer require drago-ex/translator
+```
+
+Translate property.
+```php
+private array $lang = ['en', 'cs'];
+```
+
+Translate detect.
+```php
+$locale = (new Request)->detectLanguage($this->lang);
+$translator = new Translator(__DIR__ . '/path/to/dir/' . $locale . '.ini');
+```
+
+Add translate filter.
+```php
+$this->latte->addFilter('translate', function ($message) use ($translator) {
+	return $translator->translate($message);
+});
+```
+
+Add latte filter.
+```php
+$latte->onCompile[] = function () use ($latte) {
+	FormMacros::install($latte->getCompiler());
+};
