@@ -14,9 +14,14 @@ Easy configuration for single-page sites.
 [![CodeFactor](https://www.codefactor.io/repository/github/drago-ex/simple/badge)](https://www.codefactor.io/repository/github/drago-ex/simple)
 [![Coverage Status](https://coveralls.io/repos/github/drago-ex/simple/badge.svg?branch=master)](https://coveralls.io/github/drago-ex/simple?branch=master)
 
-## Requirements
+## Technology
 - PHP 7.4 or higher
 - composer
+
+## Knowledge
+- [Latte: amazing template engine for PHP](https://github.com/nette/latte)
+- [RobotLoader: comfortable autoloading](https://github.com/nette/robot-loader)
+- [Nette HTTP Component](https://github.com/nette/http)
 
 ## Installation
 ```
