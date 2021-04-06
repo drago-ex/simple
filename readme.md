@@ -15,7 +15,7 @@ Easy configuration for single-page sites.
 [![Coverage Status](https://coveralls.io/repos/github/drago-ex/simple/badge.svg?branch=master)](https://coveralls.io/github/drago-ex/simple?branch=master)
 
 ## Technology
-- PHP 7.4 or higher
+- PHP 8.0 or higher
 - composer
 
 ## Knowledge
