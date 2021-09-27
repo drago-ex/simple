@@ -1,11 +1,16 @@
 <?php
 
+/**
+ * Test: Drago\Simple\Base\Message
+ */
+
 declare(strict_types=1);
 
 use Nette\Http\SessionSection;
 use Tester\Assert;
 
 require __DIR__ . '/../../bootstrap.php';
+
 
 class TestMessage
 {

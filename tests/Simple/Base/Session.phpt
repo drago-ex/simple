@@ -1,11 +1,16 @@
 <?php
 
+/**
+ * Test: Drago\Simple\Base\Session
+ */
+
 declare(strict_types=1);
 
 use Nette\Http\Session;
 use Tester\Assert;
 
 require __DIR__ . '/../../bootstrap.php';
+
 
 class TestSession
 {
