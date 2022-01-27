@@ -136,5 +136,5 @@ $latte->addFilter('translate', function ($message) use ($translator) {
 });
 ```
 
-## Prepared package for generator
+## Prepared package for simple project
 [https://github.com/drago-ex/simple-project](https://github.com/drago-ex/simple-project)
