@@ -14,7 +14,6 @@ use Nette\Http;
 
 /**
  * Provides access to session sections as well as session settings and management methods.
- * @property string $message
  */
 trait Session
 {
