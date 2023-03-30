@@ -15,5 +15,4 @@ namespace Drago\Simple\Base;
  */
 class Section
 {
-
 }
