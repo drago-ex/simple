@@ -20,7 +20,7 @@ trait Response
 	/**
 	 * Redirects to a new URL.
 	 */
-	public function redirect(string $url, int $code = Http\Response::S302_FOUND): void
+	public function redirect(string $url, int $code = Http\IResponse::S302_Found): void
 	{
 		$response = new Http\Response;
 		$response->redirect($url, $code);

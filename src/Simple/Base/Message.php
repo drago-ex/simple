@@ -22,7 +22,7 @@ trait Message
 	private string $fm = 'fm';
 
 
-	private function fmId(): SessionSection
+	private function fmId(): SessionSection|Section
 	{
 		return $this->session()
 			->getSection($this->fm);
@@ -46,6 +46,7 @@ trait Message
 	 */
 	public function getFlashMessage(): ?string
 	{
-		return $this->fmId()->message;
+		return $this->fmId()
+			->message;
 	}
 }
