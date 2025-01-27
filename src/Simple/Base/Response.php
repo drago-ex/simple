@@ -13,12 +13,12 @@ use Nette\Http;
 
 
 /**
- * Http response.
+ * Trait for handling HTTP responses.
  */
 trait Response
 {
 	/**
-	 * Redirects to a new URL.
+	 * Redirects to a specified URL with an optional HTTP status code.
 	 */
 	public function redirect(string $url, int $code = Http\IResponse::S302_Found): void
 	{

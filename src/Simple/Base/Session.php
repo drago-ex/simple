@@ -13,10 +13,13 @@ use Nette\Http;
 
 
 /**
- * Provides access to session sections as well as session settings and management methods.
+ * Trait for managing session sections and settings.
  */
 trait Session
 {
+	/**
+	 * Returns the session instance.
+	 */
 	public function session(): Http\Session
 	{
 		$request = (new Http\RequestFactory)->fromGlobals();

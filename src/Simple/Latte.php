@@ -15,26 +15,53 @@ use Nette\Http\RequestFactory;
 
 
 /**
- * Templating engine Latte.
+ * Custom Latte engine with base path calculation.
+ * Extends Latte\Engine to add base path handling and optimize performance.
+ * Optimized for PHP 8.3 features like constructor property promotion and readonly properties.
  */
 class Latte extends Engine
 {
+	/** @readonly */
+	private string $basePath;
+
+	private RequestFactory $requestFactory;
+
+
 	/**
-	 * Base path in template.
+	 * Initializes the engine with the RequestFactory instance.
 	 */
-	private function basePath(): string
+	public function __construct(RequestFactory $requestFactory)
 	{
-		return rtrim((new RequestFactory)
-			->fromGlobals()->url->basePath, '/');
+		parent::__construct();
+		$this->requestFactory = $requestFactory;
+		$this->basePath = $this->calculateBasePath();
 	}
 
 
 	/**
-	 * Creates template object.
+	 * Calculates and returns the base path (without trailing slashes).
 	 */
-	public function createTemplate(string $name, array $params = []): Template
+	private function calculateBasePath(): string
 	{
-		$parameters = $params + ['basePath' => $this->basePath()];
+		return rtrim($this->requestFactory->fromGlobals()->url->basePath, '/');
+	}
+
+
+	/**
+	 * Returns the cached base path.
+	 */
+	public function getBasePath(): string
+	{
+		return $this->basePath;
+	}
+
+
+	/**
+	 * Creates a template with the base path and additional parameters.
+	 */
+	public function createTemplate(string $name, array $params = [], $clearCache = true): Template
+	{
+		$parameters = $params + ['basePath' => $this->getBasePath()];
 		return parent::createTemplate($name, $parameters);
 	}
 }

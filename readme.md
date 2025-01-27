@@ -9,7 +9,7 @@ Easy configuration for single-page sites.
 [![Coverage Status](https://coveralls.io/repos/github/drago-ex/simple/badge.svg?branch=master)](https://coveralls.io/github/drago-ex/simple?branch=master)
 
 ## Technology
-- PHP 8.1 or higher
+- PHP 8.3 or higher
 - composer
 
 ## Knowledge
@@ -23,81 +23,82 @@ Easy configuration for single-page sites.
 composer require drago/simple
 ```
 
-## Trait Session
+# Traits
+## Session Trait
 ```php
-use Drago\Simple\Base\Session
+use Drago\Simple\Base\Session;
 
-// Get session.
+// Get session instance
 $this->session();
 ```
 
-## Trait Message
+## Message Trait
 ```php
 use Drago\Simple\Base\Message;
 
-// Save message.
+// Save message to session
 $this->flashMessage('Message...');
 
-// Print message.
+// Retrieve flash message from session
 $this->getFlashMessage();
 ```
 
-## Trait Response
+## Response Trait
 ```php
 use Drago\Simple\Base\Response;
 
+// Redirect to a URL
 $this->redirect('#');
 ```
 
-## Controller
+## Controller Example
 ```php
 final class Home
 {
-	private Latte\Engine $latte;
+    private Latte\Engine $latte;
 
-
-	public function __construct(Latte\Engine $latte)
-	{
-		$this->latte = $latte;
-	}
+    public function __construct(Latte\Engine $latte)
+    {
+        $this->latte = $latte;
+    }
 }
 ```
 
-## Template render
+## Template Rendering
 ```php
 public function render(): void
 {
-	$this->latte->render(__DIR__ . '/path/to/dir/template.latte');
+    $this->latte->render(__DIR__ . '/path/to/dir/template.latte');
 }
 ```
 
-## Template passing parameters
+## Passing Parameters to Templates
 ```php
 public function render(): void
 {
-	$this-flashMessage('message...');
-	$message['message'] = $this->getFlashMessage();
-	$this->latte->render(__DIR__ . '/path/to/dir/template.latte', $message);
+    $this->flashMessage('message...');
+    $message['message'] = $this->getFlashMessage();
+    $this->latte->render(__DIR__ . '/path/to/dir/template.latte', $message);
 }
 ```
 
-## Template print message
+## Template: Print Message
 ```latte
 <p n:if="$message">{$message}</p>
 ```
 
-## Template default parameter for include files
+## Template: Default Parameter for Include Files
 ```latte
 {$basePath}
 ```
 
 ## Forms
-Install via composer.
+Install Nette Forms via Composer:
 ```
 composer require nette/forms
 ```
 
-Forms latte macro.
+## Forms Latte Macro
 ```php
 $latte->onCompile[] = function () use ($latte) {
 	FormMacros::install($latte->getCompiler());
@@ -105,17 +106,17 @@ $latte->onCompile[] = function () use ($latte) {
 ```
 
 ## Translator
-Install via composer.
+Install the Translator via Composer:
 ```
 composer require drago-ex/translator
 ```
 
-Translator property.
+## Translator Property
 ```php
 private array $lang = ['en', 'cs'];
 ```
 
-Translator language detect.
+## Translator Language Detection
 ```php
 $translator = new Translator(__DIR__ . '/locale');
 $translator->setTranslate((new RequestFactory())->fromGlobals()
@@ -123,12 +124,12 @@ $translator->setTranslate((new RequestFactory())->fromGlobals()
 );
 ```
 
-Translator latte filter.
+## Translator Latte Filter
 ```php
 $latte->addFilter('translate', function ($message) use ($translator) {
 	return $translator->translate($message);
 });
 ```
 
-## Prepared package for simple project
+## Prepared Package for Simple Project
 [https://github.com/drago-ex/simple-project](https://github.com/drago-ex/simple-project)

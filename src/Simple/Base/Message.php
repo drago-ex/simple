@@ -13,7 +13,7 @@ use Nette\Http\SessionSection;
 
 
 /**
- * Flash message.
+ * Flash message trait for managing session-based messages.
  */
 trait Message
 {
@@ -22,6 +22,9 @@ trait Message
 	private string $fm = 'fm';
 
 
+	/**
+	 * Retrieves the flash message session section.
+	 */
 	private function fmId(): SessionSection|Section
 	{
 		return $this->session()
@@ -30,19 +33,19 @@ trait Message
 
 
 	/**
-	 * Save the message.
+	 * Saves the flash message to the session.
 	 */
 	public function flashMessage(string $message): SessionSection
 	{
 		$session = $this->fmId();
 		$session->message = $message;
-		$session->setExpiration('5 second');
+		$session->setExpiration('5 seconds');
 		return $session;
 	}
 
 
 	/**
-	 * Send message to template.
+	 * Retrieves the flash message for the template.
 	 */
 	public function getFlashMessage(): ?string
 	{

@@ -11,7 +11,8 @@ namespace Drago\Simple\Base;
 
 
 /**
- * @property string $message
+ * Represents a session section for flash messages.
+ * @property string $message The flash message stored in the session.
  */
 class Section
 {
