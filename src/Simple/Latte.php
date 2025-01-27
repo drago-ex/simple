@@ -21,38 +21,13 @@ use Nette\Http\RequestFactory;
  */
 class Latte extends Engine
 {
-	/** @readonly */
-	private string $basePath;
-
-	private RequestFactory $requestFactory;
-
-
 	/**
-	 * Initializes the engine with the RequestFactory instance.
+	 * Base path in template.
 	 */
-	public function __construct(RequestFactory $requestFactory)
+	private function basePath(): string
 	{
-		parent::__construct();
-		$this->requestFactory = $requestFactory;
-		$this->basePath = $this->calculateBasePath();
-	}
-
-
-	/**
-	 * Calculates and returns the base path (without trailing slashes).
-	 */
-	private function calculateBasePath(): string
-	{
-		return rtrim($this->requestFactory->fromGlobals()->url->basePath, '/');
-	}
-
-
-	/**
-	 * Returns the cached base path.
-	 */
-	public function getBasePath(): string
-	{
-		return $this->basePath;
+		return rtrim((new RequestFactory)
+			->fromGlobals()->url->basePath, '/');
 	}
 
 
@@ -61,7 +36,7 @@ class Latte extends Engine
 	 */
 	public function createTemplate(string $name, array $params = [], $clearCache = true): Template
 	{
-		$parameters = $params + ['basePath' => $this->getBasePath()];
+		$parameters = $params + ['basePath' => $this->basePath()];
 		return parent::createTemplate($name, $parameters);
 	}
 }
