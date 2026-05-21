@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Drago Extension
- * Package built on Nette Framework
- */
-
 declare(strict_types=1);
 
 namespace Drago\Simple;
@@ -14,16 +9,9 @@ use Latte\Runtime\Template;
 use Nette\Http\RequestFactory;
 
 
-/**
- * Custom Latte engine with base path calculation.
- * Extends Latte\Engine to add base path handling and optimize performance.
- * Optimized for PHP 8.3 features like constructor property promotion and readonly properties.
- */
+/** Custom Latte engine with automatic base path injection into templates. */
 class Latte extends Engine
 {
-	/**
-	 * Base path in template.
-	 */
 	private function basePath(): string
 	{
 		return rtrim((new RequestFactory)
@@ -32,9 +20,9 @@ class Latte extends Engine
 
 
 	/**
-	 * Creates a template with the base path and additional parameters.
+	 * @param array<string, mixed> $params
 	 */
-	public function createTemplate(string $name, array $params = [], $clearCache = true): Template
+	public function createTemplate(string $name, array $params = [], bool $clearCache = true): Template
 	{
 		$parameters = $params + ['basePath' => $this->basePath()];
 		return parent::createTemplate($name, $parameters);
