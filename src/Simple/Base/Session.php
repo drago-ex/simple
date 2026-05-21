@@ -10,6 +10,7 @@ use Nette\Http;
 /** Trait for managing the session instance. */
 trait Session
 {
+	/** Returns the session instance. */
 	public function session(): Http\Session
 	{
 		$request = (new Http\RequestFactory)->fromGlobals();
