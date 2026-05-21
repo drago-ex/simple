@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Drago\Simple\Base;
 
 class TraitStub
