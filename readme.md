@@ -14,7 +14,7 @@ Easy configuration for single-page sites.
 
 ## Installation
 ```
-composer require drago/simple
+composer require drago-ex/simple
 ```
 
 # Traits
