@@ -13,7 +13,6 @@ trait Message
 	private string $fm = 'fm';
 
 
-	/** Saves the flash message to the session. */
 	public function flashMessage(string $message): void
 	{
 		$section = $this->session()->getSection($this->fm);
@@ -22,7 +21,6 @@ trait Message
 	}
 
 
-	/** Retrieves the flash message from the session. */
 	public function getFlashMessage(): ?string
 	{
 		$message = $this->session()->getSection($this->fm)->get('message');
