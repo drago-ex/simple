@@ -8,11 +8,13 @@ Easy configuration for single-page sites.
 [![Coding Style](https://github.com/drago-ex/simple/actions/workflows/coding-style.yml/badge.svg)](https://github.com/drago-ex/simple/actions/workflows/coding-style.yml)
 
 ## Requirements
+
 - PHP >= 8.3
 - Nette Framework
 - Composer
 
 ## Installation
+
 ```
 composer require drago-ex/simple
 ```
@@ -20,12 +22,14 @@ composer require drago-ex/simple
 ## Traits
 
 ### Knowledge
+
 - [Latte: amazing template engine for PHP](https://github.com/nette/latte)
 - [RobotLoader: comfortable autoloading](https://github.com/nette/robot-loader)
 - [Nette HTTP Component](https://github.com/nette/http)
 - [Tracy - PHP debugger](https://github.com/nette/tracy)
 
 ### Session Trait
+
 ```php
 use Drago\Simple\Base\Session;
 
@@ -34,6 +38,7 @@ $this->session();
 ```
 
 ### Message Trait
+
 ```php
 use Drago\Simple\Base\Message;
 
@@ -45,6 +50,7 @@ $this->getFlashMessage();
 ```
 
 ### Response Trait
+
 ```php
 use Drago\Simple\Base\Response;
 
@@ -53,6 +59,7 @@ $this->redirect('#');
 ```
 
 ### Controller Example
+
 ```php
 final class Home
 {
@@ -66,6 +73,7 @@ final class Home
 ```
 
 ### Template Rendering
+
 ```php
 public function render(): void
 {
@@ -74,6 +82,7 @@ public function render(): void
 ```
 
 ### Passing Parameters to Templates
+
 ```php
 public function render(): void
 {
@@ -84,22 +93,26 @@ public function render(): void
 ```
 
 ### Template: Print Message
+
 ```latte
 <p n:if="$message">{$message}</p>
 ```
 
 ### Template: Default Parameter for Include Files
+
 ```latte
 {$basePath}
 ```
 
 ### Forms
+
 Install Nette Forms via Composer:
 ```
 composer require nette/forms
 ```
 
 ### Forms Latte Macro
+
 ```php
 $latte->onCompile[] = function () use ($latte) {
 	FormMacros::install($latte->getCompiler());
@@ -107,17 +120,20 @@ $latte->onCompile[] = function () use ($latte) {
 ```
 
 ### Translator
+
 Install the Translator via Composer:
 ```
 composer require drago-ex/translator
 ```
 
 ### Translator Property
+
 ```php
 private array $lang = ['en', 'cs'];
 ```
 
 ### Translator Language Detection
+
 ```php
 $translator = new Translator(__DIR__ . '/locale');
 $translator->setTranslate((new RequestFactory())->fromGlobals()
@@ -126,6 +142,7 @@ $translator->setTranslate((new RequestFactory())->fromGlobals()
 ```
 
 ### Translator Latte Filter
+
 ```php
 $latte->addFilter('translate', function ($message) use ($translator) {
 	return $translator->translate($message);
@@ -133,4 +150,5 @@ $latte->addFilter('translate', function ($message) use ($translator) {
 ```
 
 ### Prepared Package for Simple Project
+
 [https://github.com/drago-ex/simple-project](https://github.com/drago-ex/simple-project)
