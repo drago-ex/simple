@@ -12,13 +12,6 @@ use Nette\Http\RequestFactory;
 /** Custom Latte engine with automatic base path injection into templates. */
 class Latte extends Engine
 {
-	private function basePath(): string
-	{
-		return rtrim((new RequestFactory)
-			->fromGlobals()->url->basePath, '/');
-	}
-
-
 	/**
 	 * @param array<string, mixed> $params
 	 */
@@ -26,5 +19,12 @@ class Latte extends Engine
 	{
 		$parameters = $params + ['basePath' => $this->basePath()];
 		return parent::createTemplate($name, $parameters);
+	}
+
+
+	private function basePath(): string
+	{
+		return rtrim((new RequestFactory)
+			->fromGlobals()->url->basePath, '/');
 	}
 }
