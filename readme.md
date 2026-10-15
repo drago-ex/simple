@@ -9,7 +9,7 @@ Easy configuration for single-page sites.
 
 ## Requirements
 
-- PHP >= 8.3
+- PHP >= 8.3, < 9
 - Nette Framework
 - Composer
 
