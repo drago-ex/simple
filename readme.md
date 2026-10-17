@@ -19,21 +19,36 @@ Easy configuration for single-page sites.
 composer require drago-ex/simple
 ```
 
-## Traits
-
-### Knowledge
+## Knowledge
 
 - [Latte: amazing template engine for PHP](https://github.com/nette/latte)
 - [RobotLoader: comfortable autoloading](https://github.com/nette/robot-loader)
 - [Nette HTTP Component](https://github.com/nette/http)
 - [Tracy - PHP debugger](https://github.com/nette/tracy)
 
+## Latte
+
+`Drago\Simple\Latte` is a Latte engine that passes `$basePath` to every template:
+
+```php
+use Drago\Simple\Latte;
+
+$latte = new Latte;
+$latte->setTempDirectory(__DIR__ . '/../temp/latte');
+```
+
+```latte
+<link rel="stylesheet" href="{$basePath}/css/style.css">
+```
+
+## Traits
+
 ### Session Trait
 
 ```php
 use Drago\Simple\Base\Session;
 
-// Get session instance
+// The session is created from the current request on the first call and then reused
 $this->session();
 ```
 
@@ -42,10 +57,10 @@ $this->session();
 ```php
 use Drago\Simple\Base\Message;
 
-// Save message to session
+// Save a message for the next page
 $this->flashMessage('Message...');
 
-// Retrieve flash message from session
+// Read the message; it is removed after reading, so it is shown only once
 $this->getFlashMessage();
 ```
 
@@ -54,101 +69,77 @@ $this->getFlashMessage();
 ```php
 use Drago\Simple\Base\Response;
 
-// Redirect to a URL
+// Redirect to a URL; the script stops after the redirect is sent
 $this->redirect('#');
 ```
 
-### Controller Example
+## Controller Example
 
 ```php
+use Drago\Simple\Base\Message;
+use Drago\Simple\Latte;
+
 final class Home
 {
-    private Latte\Engine $latte;
+	use Message;
 
-    public function __construct(Latte\Engine $latte)
-    {
-        $this->latte = $latte;
-    }
+	public function __construct(
+		private Latte $latte,
+	) {
+	}
+
+
+	public function render(): void
+	{
+		$this->latte->render(__DIR__ . '/templates/Home.latte', [
+			'message' => $this->getFlashMessage(),
+		]);
+	}
 }
 ```
-
-### Template Rendering
-
-```php
-public function render(): void
-{
-    $this->latte->render(__DIR__ . '/path/to/dir/template.latte');
-}
-```
-
-### Passing Parameters to Templates
-
-```php
-public function render(): void
-{
-    $this->flashMessage('message...');
-    $message['message'] = $this->getFlashMessage();
-    $this->latte->render(__DIR__ . '/path/to/dir/template.latte', $message);
-}
-```
-
-### Template: Print Message
 
 ```latte
 <p n:if="$message">{$message}</p>
 ```
 
-### Template: Default Parameter for Include Files
-
-```latte
-{$basePath}
-```
-
-### Forms
+## Forms
 
 Install Nette Forms via Composer:
 ```
 composer require nette/forms
 ```
 
-### Forms Latte Macro
-
+Register the form tags in Latte:
 ```php
-$latte->onCompile[] = function () use ($latte) {
-	FormMacros::install($latte->getCompiler());
-};
+$latte->addExtension(new Nette\Bridges\FormsLatte\FormsExtension);
 ```
 
-### Translator
+## Translator
 
 Install the Translator via Composer:
 ```
 composer require drago-ex/translator
 ```
 
-### Translator Property
-
+Create the translator with your translation directory and choose the language from the request:
 ```php
-private array $lang = ['en', 'cs'];
+use Drago\Localization\Options;
+use Drago\Localization\Translator;
+use Drago\Localization\TranslatorFinder;
+use Nette\Http\RequestFactory;
+
+$options = new Options;
+$options->translateDirs = [__DIR__ . '/locale'];
+
+$translator = new Translator($options, new TranslatorFinder);
+$lang = (new RequestFactory)->fromGlobals()->detectLanguage(['en', 'cs']) ?? 'en';
+$translator->setTranslate($lang);
+
+$latte->addExtension(new Latte\Essential\TranslatorExtension($translator->translate(...)));
 ```
 
-### Translator Language Detection
+Translations are then available in templates as `{_'Hello'}` or `{$text|translate}`.
 
-```php
-$translator = new Translator(__DIR__ . '/locale');
-$translator->setTranslate((new RequestFactory())->fromGlobals()
-	->detectLanguage($this->lang)
-);
-```
-
-### Translator Latte Filter
-
-```php
-$latte->addFilter('translate', function ($message) use ($translator) {
-	return $translator->translate($message);
-});
-```
-
-### Prepared Package for Simple Project
+## Prepared Package for Simple Project
 
 [https://github.com/drago-ex/simple-project](https://github.com/drago-ex/simple-project)
