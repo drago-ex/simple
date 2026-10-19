@@ -16,6 +16,10 @@ Use this file as package-specific guidance when working in this repository. Keep
 - `.github/`: CI workflows; keep their PHP versions and commands consistent with Composer and the package scripts.
 - `composer.json`: package metadata, dependency constraints, autoloading, and available Composer scripts.
 
+## Key Parts
+- Traits for single-page sites without the Nette application: `Base\Session` (one session per object), `Base\Message` (flash message read once), `Base\Response` (redirect, then `terminate()` exits; tests override it).
+- `Drago\Simple\Latte` adds `$basePath` to every template. Only Latte 3 APIs apply (`FormsExtension`, `TranslatorExtension`).
+
 ## Dependencies
 
 Composer constraints describe the package contract. Before changing integration behavior, inspect the source and the actual call sites in this package; do not infer runtime usage solely from dependency declarations.

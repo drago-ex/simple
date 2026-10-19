@@ -9,9 +9,15 @@ use Nette\Http;
 
 trait Session
 {
+	private ?Http\Session $httpSession = null;
+
+
+	/** Returns the session, created from the current request on the first call. */
 	public function session(): Http\Session
 	{
-		$request = (new Http\RequestFactory)->fromGlobals();
-		return new Http\Session($request, new Http\Response);
+		return $this->httpSession ??= new Http\Session(
+			(new Http\RequestFactory)->fromGlobals(),
+			new Http\Response,
+		);
 	}
 }

@@ -17,5 +17,9 @@ class TestSession
 	use Drago\Simple\Base\Session;
 }
 
-$class = new TestSession;
-Assert::type(Session::class, $class->session());
+
+test('The same session object is returned on every call', function () {
+	$class = new TestSession;
+	Assert::type(Session::class, $class->session());
+	Assert::same($class->session(), $class->session());
+});

@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-use Drago\Simple\Base;
+use Drago\Simple\Base\Message;
+use Drago\Simple\Base\Response;
 
+
+/** Lets PHPStan analyse the Message and Response traits (Message brings in Session), which no class in the package uses. */
 class TraitStub
 {
-	use Base\Message;
-	use Base\Response;
-	use Base\Session;
+	use Message;
+	use Response;
 }

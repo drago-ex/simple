@@ -16,7 +16,16 @@ class TestMessage
 	use Drago\Simple\Base\Message;
 }
 
-$class = new TestMessage;
-$class->flashMessage('Message...');
-Assert::type('string', $class->getFlashMessage());
-Assert::same('Message...', $class->getFlashMessage());
+
+test('A flash message is returned once and then removed', function () {
+	$class = new TestMessage;
+	$class->flashMessage('Message...');
+
+	Assert::same('Message...', $class->getFlashMessage());
+	Assert::null($class->getFlashMessage());
+});
+
+
+test('Without a message null is returned', function () {
+	Assert::null((new TestMessage)->getFlashMessage());
+});
