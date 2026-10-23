@@ -18,7 +18,7 @@ class Latte extends Engine
 	public function createTemplate(string $name, array $params = [], bool $clearCache = true): Template
 	{
 		$parameters = $params + ['basePath' => $this->basePath()];
-		return parent::createTemplate($name, $parameters);
+		return parent::createTemplate($name, $parameters, $clearCache);
 	}
 
 

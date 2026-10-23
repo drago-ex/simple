@@ -111,34 +111,35 @@ composer require nette/forms
 
 Register the form tags in Latte:
 ```php
-$latte->addExtension(new Nette\Bridges\FormsLatte\FormsExtension);
+$latte->addExtension(new \Nette\Bridges\FormsLatte\FormsExtension);
 ```
 
 ## Translator
 
-Install the Translator via Composer:
-```
-composer require drago-ex/translator
+`Drago\Simple\Translator` reads the messages of one language from a PHP file returning an array:
+
+```php
+// locale/cs.php
+return [
+	'Hello' => 'Ahoj',
+	'Hello %s' => 'Ahoj %s',
+];
 ```
 
-Create the translator with your translation directory and choose the language from the request:
+Choose the language from the request and register the translator in Latte:
 ```php
-use Drago\Localization\Options;
-use Drago\Localization\Translator;
-use Drago\Localization\TranslatorFinder;
+use Drago\Simple\Translator;
 use Nette\Http\RequestFactory;
 
-$options = new Options;
-$options->translateDirs = [__DIR__ . '/locale'];
-
-$translator = new Translator($options, new TranslatorFinder);
 $lang = (new RequestFactory)->fromGlobals()->detectLanguage(['en', 'cs']) ?? 'en';
-$translator->setTranslate($lang);
+$translator = new Translator(__DIR__ . '/locale', $lang);
 
-$latte->addExtension(new Latte\Essential\TranslatorExtension($translator->translate(...)));
+$latte->addExtension(new \Latte\Essential\TranslatorExtension($translator));
 ```
 
-Translations are then available in templates as `{_'Hello'}` or `{$text|translate}`.
+Translations are then available in templates as `{_'Hello'}`, `{_'Hello %s', $name}` or `{$text|translate}`;
+a message without a translation is shown as it is. Every language needs its file (`locale/en.php` may return
+`[]`), otherwise the translator throws an exception. It also works as the translator of Nette Forms.
 
 ## Prepared Package for Simple Project
 
