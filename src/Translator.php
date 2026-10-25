@@ -40,7 +40,8 @@ final class Translator implements Localization\Translator
 			throw new InvalidArgumentException("Translation file '$file' must return an array.");
 		}
 
-		$this->messages = array_map(strval(...), $messages);
+		// only texts are translations; an array (e.g. plural forms) or an object is left out
+		$this->messages = array_map(strval(...), array_filter($messages, is_scalar(...)));
 	}
 
 
@@ -50,11 +51,24 @@ final class Translator implements Localization\Translator
 	}
 
 
-	/** Returns the translation, or the message itself when it has none; parameters are inserted by sprintf(). */
+	/**
+	 * Returns the translation, or the message itself when it has none; parameters are inserted by sprintf().
+	 * Nette Forms always passes one more parameter (null when the rule has no number) and inserts %d, %label
+	 * etc. itself, so null parameters are ignored and a message whose placeholders do not fit is returned as it is.
+	 */
 	public function translate(string|\Stringable $message, mixed ...$parameters): string
 	{
 		$message = (string) $message;
 		$translation = $this->messages[$message] ?? $message;
-		return $parameters === [] ? $translation : vsprintf($translation, $parameters);
+		$parameters = array_values(array_filter($parameters, fn(mixed $parameter): bool => $parameter !== null));
+		if ($parameters === []) {
+			return $translation;
+		}
+
+		try {
+			return vsprintf($translation, $parameters);
+		} catch (\ValueError) {
+			return $translation;
+		}
 	}
 }

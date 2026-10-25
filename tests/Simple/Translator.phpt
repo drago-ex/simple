@@ -60,3 +60,14 @@ test('A language that could leave the directory is rejected', function () {
 		"Invalid language '../locale/cs'.",
 	);
 });
+
+
+test('A null parameter or a message with other placeholders does not break the translation', function () {
+	$translator = new Translator(LocaleDir, 'cs');
+
+	// Nette Forms passes null when the rule has no number and formats %d / %label itself
+	Assert::same('Please enter a value between %d and %d.', $translator->translate('Please enter a value between %d and %d.', null));
+	Assert::same('%label is required', $translator->translate('%label is required', null));
+	Assert::same('%label is required', $translator->translate('%label is required', 5));
+	Assert::same('Discount 50%', $translator->translate('Discount 50%', 'x'));
+});
