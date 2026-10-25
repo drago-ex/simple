@@ -24,9 +24,7 @@ composer require drago-ex/simple
 ## Knowledge
 
 - [Latte: amazing template engine for PHP](https://github.com/nette/latte)
-- [RobotLoader: comfortable autoloading](https://github.com/nette/robot-loader)
 - [Nette HTTP Component](https://github.com/nette/http)
-- [Tracy - PHP debugger](https://github.com/nette/tracy)
 
 ## Latte
 

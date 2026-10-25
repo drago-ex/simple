@@ -24,9 +24,7 @@ composer require drago-ex/simple
 ## Další informace
 
 - [Latte: skvělý šablonovací systém pro PHP](https://github.com/nette/latte)
-- [RobotLoader: pohodlné automatické načítání tříd](https://github.com/nette/robot-loader)
 - [Nette HTTP](https://github.com/nette/http)
-- [Tracy - PHP debugger](https://github.com/nette/tracy)
 
 ## Latte
 
@@ -50,7 +48,7 @@ $latte->setTempDirectory(__DIR__ . '/../temp/latte');
 ```php
 use Drago\Simple\Base\Session;
 
-// Session se vytvoří z aktuálního požadavku při prvním volání a pak se používá znovu
+// The session is created from the current request on the first call and then reused
 $this->session();
 ```
 
@@ -59,10 +57,10 @@ $this->session();
 ```php
 use Drago\Simple\Base\Message;
 
-// Uloží zprávu pro další stránku
+// Save a message for the next page
 $this->flashMessage('Message...');
 
-// Přečte zprávu; po přečtení se smaže, takže se zobrazí jen jednou
+// Read the message; it is removed after reading, so it is shown only once
 $this->getFlashMessage();
 ```
 
@@ -71,7 +69,7 @@ $this->getFlashMessage();
 ```php
 use Drago\Simple\Base\Response;
 
-// Přesměruje na URL; po odeslání přesměrování skript skončí
+// Redirect to a URL; the script stops after the redirect is sent
 $this->redirect('#');
 ```
 
