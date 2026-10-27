@@ -1,7 +1,5 @@
 # Drago Simple
 
-[English](readme.md) | Čeština
-
 Snadná konfigurace pro jednostránkové weby.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/drago-ex/simple/blob/main/license)

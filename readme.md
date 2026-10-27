@@ -1,7 +1,5 @@
 # Drago Simple
 
-English | [Čeština](readme.cs.md)
-
 Easy configuration for single-page sites.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/drago-ex/simple/blob/main/license)
