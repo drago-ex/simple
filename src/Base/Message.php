@@ -1,8 +1,8 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Drago\Simple\Base;
+
+use function is_string;
 
 
 /** Flash message trait for managing session-based messages. */

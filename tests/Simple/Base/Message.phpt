@@ -1,10 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Test: Drago\Simple\Base\Message
  */
-
-declare(strict_types=1);
 
 use Tester\Assert;
 

@@ -1,10 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Test: Drago\Simple\Latte
  */
-
-declare(strict_types=1);
 
 use Drago\Simple\Latte;
 use Latte\Runtime\Template;

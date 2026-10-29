@@ -1,13 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Test: Drago\Simple\Translator
  */
 
-declare(strict_types=1);
-
 use Drago\Simple\Latte;
 use Drago\Simple\Translator;
+use Latte\Essential\TranslatorExtension;
+use Latte\Loaders\StringLoader;
 use Tester\Assert;
 
 require __DIR__ . '/../bootstrap.php';
@@ -32,8 +32,8 @@ test('Parameters are inserted into the translation', function () {
 
 test('Latte translates with the translator', function () {
 	$latte = new Latte;
-	$latte->setLoader(new \Latte\Loaders\StringLoader);
-	$latte->addExtension(new \Latte\Essential\TranslatorExtension(new Translator(LocaleDir, 'cs')));
+	$latte->setLoader(new StringLoader);
+	$latte->addExtension(new TranslatorExtension(new Translator(LocaleDir, 'cs')));
 
 	Assert::same('Ahoj Ahoj', $latte->renderToString('{_\'Hello\'} {=\'Hello\'|translate}'));
 });

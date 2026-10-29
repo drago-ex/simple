@@ -1,11 +1,10 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Drago\Simple;
 
 use InvalidArgumentException;
 use Nette\Localization;
+use function is_array;
 
 
 /**

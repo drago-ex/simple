@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Drago\Simple;
 
@@ -25,6 +23,8 @@ class Latte extends Engine
 	private function basePath(): string
 	{
 		return rtrim((new RequestFactory)
-			->fromGlobals()->url->basePath, '/');
+			->fromGlobals()
+			->url
+			->basePath, '/');
 	}
 }
