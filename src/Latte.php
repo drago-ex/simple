@@ -10,9 +10,7 @@ use Nette\Http\RequestFactory;
 /** Custom Latte engine with automatic base path injection into templates. */
 class Latte extends Engine
 {
-	/**
-	 * @param array<string, mixed> $params
-	 */
+	/** @param array<string, mixed> $params */
 	public function createTemplate(string $name, array $params = [], bool $clearCache = true): Template
 	{
 		$parameters = $params + ['basePath' => $this->basePath()];

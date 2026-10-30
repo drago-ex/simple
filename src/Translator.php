@@ -17,9 +17,7 @@ final class Translator implements Localization\Translator
 	private array $messages;
 
 
-	/**
-	 * @throws InvalidArgumentException When the language file does not exist or does not return an array.
-	 */
+	/** @throws InvalidArgumentException When the language file does not exist or does not return an array. */
 	public function __construct(
 		string $dir,
 		private readonly string $language,
