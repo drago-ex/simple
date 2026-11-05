@@ -1,6 +1,7 @@
 # Drago Simple
 
-Easy configuration for single-page sites.
+Small building blocks for single-page sites without a framework: a Latte engine with `$basePath`,
+traits for the session, flash messages and redirects, and a translator.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/drago-ex/simple/blob/main/license)
 [![PHP version](https://badge.fury.io/ph/drago-ex%2Fsimple.svg)](https://badge.fury.io/ph/drago-ex%2Fsimple)
@@ -18,11 +19,6 @@ Easy configuration for single-page sites.
 ```
 composer require drago-ex/simple
 ```
-
-## Knowledge
-
-- [Latte: amazing template engine for PHP](https://github.com/nette/latte)
-- [Nette HTTP Component](https://github.com/nette/http)
 
 ## Latte
 
@@ -139,6 +135,11 @@ Translations are then available in templates as `{_'Hello'}`, `{_'Hello %s', $na
 a message without a translation is shown as it is. Every language needs its file (`locale/en.php` may return
 `[]`), otherwise the translator throws an exception. It also works as the translator of Nette Forms.
 
-## Prepared Package for Simple Project
+## Starter Project
 
-[https://github.com/drago-ex/simple-project](https://github.com/drago-ex/simple-project)
+[Drago Simple Project](https://github.com/drago-ex/simple-project) is a ready project with this package and a Docker server.
+
+## Knowledge
+
+- [Latte](https://latte.nette.org)
+- [Nette HTTP](https://doc.nette.org/en/http)
